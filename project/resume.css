@@ -1,0 +1,112 @@
+* {
+  box-sizing: border-box;
+}
+
+header{
+  padding: 45px;
+  margin: auto;
+}
+
+body {
+  font-family: "Lato", sans-serif;
+  margin: 0;
+  text-align: center;
+}
+
+
+
+/*  these next lines are all for the top border */
+
+
+a {
+  text-decoration: none;
+  color: #0499ff;
+}
+a:hover {
+  color: #6633ff;
+}
+
+.main-nav {
+  width: 100%;
+  background: black;
+  min-height: 30px;
+  padding: 10px;
+  position: fixed;
+  text-align: center;
+  z-index: 99;
+}
+.nav {
+  display: flex;
+  justify-content: space-around;
+  font-weight: 700;
+  list-style-type: none;
+  margin: 0 auto;
+  padding: 0;
+}
+.nav .name {
+  display: block;
+  color: #0499ff;
+}
+.nav li {
+  padding: 4px 5px 5px 5px;
+}
+.nav a {
+  transition: all .5s;
+}
+.nav a:hover {
+  color: white
+}
+
+/*  these above lines are all for the top border */
+
+.main-image {
+  border: solid 4px black;
+  border-radius: 50%;
+  margin: 60px;
+  padding: 0px;
+  height: 300px;
+  transform: rotate(-90deg);
+
+}
+
+
+h1, h2, h3, h4 {
+  background-color: red;
+  padding: 0px;
+  border: solid;
+  border-width: 2px;
+  margin: 60px;
+}
+
+#Experience {
+  background-color: grey;
+  padding: 0px;
+  border: solid;
+  border-width: 2px;
+  margin: 60px;
+}
+
+#Education {
+  background-color: blue;
+  padding: 0px;
+  border: solid;
+  border-width: 2px;
+  margin: 60px;
+}
+
+#Employment {
+  background-color: green;
+  padding: 0px;
+  border: solid;
+  border-width: 2px;
+  margin: 60px;
+}
+
+.section-title {
+  text-transform: capitalize;
+}
+
+#contact-us{
+  border: solid 2px red;
+  margin: 10px;
+}
