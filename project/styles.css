@@ -57,6 +57,11 @@ a:hover {
 
 header {
   text-align: center;
+  overflow: hidden;
+  padding-top: 20px;
+}
+#maria {
+  text-align: center;
   background: url('images/Maria.jpg') no-repeat top center ;
   background-size: cover;
   overflow: hidden;
