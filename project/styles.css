@@ -94,9 +94,9 @@ header .profile-image:hover {
   color: white;
 }
 .card {
-  margin: 30px;
-  padding: 20px 40px 40px;
-  max-width: 500px;
+  margin: 5px;
+  padding: 10px;
+  max-width: 30%;
   text-align: left;
   background: #fff;
   border-bottom: 4px solid #ccc;
