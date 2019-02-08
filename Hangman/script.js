@@ -18,119 +18,98 @@ var selectableWords = // Word list
         "KOENIGSEGG",
     ];
 
-const maxTries = 10; // Maximum number of tries player has
+const maxTries = 10;
 
-var guessedLetters = []; // Stores the letters the user guessed
-var wordIndex; // Index of the current wordIndex in the array
-var guessingWord = []; // This will be the wordIndex we actually build to match the current wordIndex
-var remainingGuesses = 0; // How many tries the player has left
-var hasFinished = false; // Flag for 'press any key to try again'     
-var wins = 0; // How many wins has the player racked up
-
-// Game audio
-var keySound = new Audio('./assets/audio/typewriter-key.wav');
+var guessedLetters = []; 
+var wordIndex; 
+var guessingWord = []; 
+var remainingGuesses = 0; 
+var hasFinished = false;   
+var wins = 0; 
+var keySound = new Audio('./assets/audio/typewriter_click.wav');
 var winSound = new Audio('./assets/audio/you-win.wav');
 var loseSound = new Audio('./assets/audio/you-lose.wav');
 
-// Reset our game-level variables
+
 function resetGame() {
     remainingGuesses = maxTries;
-
-    // Use Math.floor to round the random number down to the nearest whole.
     wordIndex = Math.floor(Math.random() * (selectableWords.length));
-
-    // Clear out arrays
     guessedLetters = [];
     guessingWord = [];
-
-    // Make sure the hangman image is cleared
     document.getElementById("hangmanImage").src = "";
 
-    // Build the guessing wordIndex and clear it out - this is choosing the random word from the array.
     for (var i = 0; i < selectableWords[wordIndex].length; i++) {
         guessingWord.push("_");
     }
 
-    // Hide game over and win images/text
     document.getElementById("pressKeyTryAgain").style.cssText = "display: none";
     document.getElementById("gameover-image").style.cssText = "display: none";
     document.getElementById("youwin-image").style.cssText = "display: none";
 
-    // Show display
+
     updateDisplay();
 };
 
-//  Updates the display on the HTML Page
 function updateDisplay() {
 
     document.getElementById("totalWins").innerText = wins;
 
-    // Display how much of the wordIndex we've already guessed on screen.
-    // Printing the array would add commas (,) - so we concatenate a string from each value in the array.
     var guessingWordText = "";
     for (var i = 0; i < guessingWord.length; i++) {
         guessingWordText += guessingWord[i];
     }
-
-    //
     document.getElementById("currentWord").innerText = guessingWordText;
     document.getElementById("remainingGuesses").innerText = remainingGuesses;
     document.getElementById("guessedLetters").innerText = guessedLetters;
 };
 
 
-// Updates the image depending on how many guesses
+
 function updateHangmanImage() {
     document.getElementById("hangmanImage").src = "assets/images/" + (maxTries - remainingGuesses) + ".png";
 };
 
-// This function takes a letter and finds all instances of 
-// appearance in the string and replaces them in the guess wordIndex.
 function evaluateGuess(letter) {
     // Array to store positions of letters in string
     var positions = [];
 
-    // Loop through wordIndex finding all instances of guessed letter, store the indicies in an array.
     for (var i = 0; i < selectableWords[wordIndex].length; i++) {
         if (selectableWords[wordIndex][i] === letter) {
             positions.push(i);
         }
     }
 
-    // if there are no indicies, remove a guess and update the hangman image
     if (positions.length <= 0) {
         remainingGuesses--;
         updateHangmanImage();
     } else {
-        // Loop through all the indicies and replace the '_' with a letter.
         for (var i = 0; i < positions.length; i++) {
             guessingWord[positions[i]] = letter;
         }
     }
 };
-// Checks for a win by seeing if there are any remaining underscores in the guessingword we are building.
+
 function checkWin() {
     if (guessingWord.indexOf("_") === -1) {
         document.getElementById("youwin-image").style.cssText = "display: block";
         document.getElementById("pressKeyTryAgain").style.cssText = "display: block";
+        document.getElementById("hangmanImage").style.cssText = "display: none";
         wins++;
         winSound.play();
         hasFinished = true;
     }
 };
 
-
-// Checks for a loss
 function checkLoss() {
     if (remainingGuesses <= 0) {
         loseSound.play();
         document.getElementById("gameover-image").style.cssText = "display: block";
-        document.getElementById("pressKeyTryAgain").style.cssText = "display:block";
+        document.getElementById("pressKeyTryAgain").style.cssText = "display: block";
+        document.getElementById("hangmanImage").style.cssText = "display: none";
         hasFinished = true;
     }
 }
 
-// Makes a guess
 function makeGuess(letter) {
     if (remainingGuesses > 0) {
         // Make sure we didn't use this letter yet
@@ -143,9 +122,7 @@ function makeGuess(letter) {
 };
 
 
-// Event listener
 document.onkeydown = function (event) {
-    // If we finished a game, dump one keystroke and reset.
     if (hasFinished) {
         resetGame();
         hasFinished = false;
