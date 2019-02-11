@@ -20,12 +20,12 @@ var selectableWords = // Word list
 
 const maxTries = 10;
 
-var guessedLetters = []; 
-var wordIndex; 
-var guessingWord = []; 
-var remainingGuesses = 0; 
-var hasFinished = false;   
-var wins = 0; 
+var guessedLetters = [];
+var wordIndex;
+var guessingWord = [];
+var remainingGuesses = 0;
+var hasFinished = false;
+var wins = 0;
 var keySound = new Audio('./assets/audio/typewriter_click.wav');
 var winSound = new Audio('./assets/audio/you-win.wav');
 var loseSound = new Audio('./assets/audio/you-lose.wav');
