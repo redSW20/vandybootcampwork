@@ -59,7 +59,7 @@ function updateDisplay() {
         guessingWordText += guessingWord[i];
     }
     document.getElementById("currentWord").innerText = guessingWordText;
-    console.log(guessingWord)
+    console.log(selectableWords[wordIndex])
     document.getElementById("remainingGuesses").innerText = remainingGuesses;
     document.getElementById("guessedLetters").innerText = guessedLetters;
 };
@@ -107,7 +107,7 @@ function checkLoss() {
         document.getElementById("gameover-image").style.cssText = "display: block", "img-width: 300px";
         document.getElementById("pressKeyTryAgain").style.cssText = "display: block";
         document.getElementById("hangmanImage").style.cssText = "display: block";
-        document.getElementById("currentWord").innerText = guessingWord;
+        document.getElementById("currentWord").innerText = selectableWords[wordIndex];
         hasFinished = true;
     }
 }
