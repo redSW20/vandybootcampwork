@@ -59,7 +59,6 @@ function updateDisplay() {
         guessingWordText += guessingWord[i];
     }
     document.getElementById("currentWord").innerText = guessingWordText;
-    console.log(selectableWords[wordIndex])
     document.getElementById("remainingGuesses").innerText = remainingGuesses;
     document.getElementById("guessedLetters").innerText = guessedLetters;
 };
